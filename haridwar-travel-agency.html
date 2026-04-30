@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DevBhoomi Travels — Haridwar</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal: #2A9D8F; --teal-dark: #1B6E65; --teal-light: #D6F0EE;
+    --sage: #6B9080; --sage-light: #E8F0EC;
+    --yellow: #E9C46A; --yellow-pale: #FDF8EA;
+    --white: #FFFFFF; --cream: #FAF8F3;
+    --text-dark: #1E2D2C; --text-mid: #4A6360; --text-muted: #8BA5A1;
+    --border: rgba(42,157,143,0.15);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--white); color: var(--text-dark); line-height: 1.7; }
+
+  nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.93); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 600; color: var(--teal-dark); }
+  .nav-logo span { color: var(--yellow); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 0.875rem; color: var(--text-mid); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta { background: var(--teal); color: white; border: none; padding: 0.55rem 1.4rem; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.875rem; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--teal-dark); }
+
+  .hero { min-height: 100vh; background: var(--cream); padding: 68px 5% 0; display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4rem; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(42,157,143,0.07) 0%, transparent 70%); top: 10%; right: 5%; pointer-events: none; }
+  .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--teal-light); color: var(--teal-dark); font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 1rem; border-radius: 50px; margin-bottom: 1.5rem; }
+  .hero-eyebrow::before { content: ''; width: 6px; height: 6px; background: var(--teal); border-radius: 50%; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 600; line-height: 1.15; margin-bottom: 1.5rem; }
+  .hero h1 em { font-style: italic; color: var(--teal); }
+  .hero p { font-size: 1.05rem; color: var(--text-mid); max-width: 440px; margin-bottom: 2.5rem; font-weight: 300; line-height: 1.8; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: var(--teal); color: white; border: none; padding: 0.85rem 2rem; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: background 0.2s, transform 0.15s; text-decoration: none; display: inline-block; }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--teal-dark); border: 1.5px solid var(--teal); padding: 0.85rem 2rem; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .btn-outline:hover { background: var(--teal-light); }
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 600; color: var(--teal-dark); }
+  .stat-label { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; }
+  .hero-image-wrap { position: relative; display: flex; justify-content: center; }
+  .hero-img-main { width: 100%; max-width: 520px; border-radius: 24px; aspect-ratio: 4/5; background: linear-gradient(160deg, #2A9D8F 0%, #1B6E65 40%, #0D4F4A 100%); display: flex; align-items: flex-end; overflow: hidden; position: relative; }
+  .hero-img-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 20%, rgba(233,196,106,0.25) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(107,144,128,0.3) 0%, transparent 50%); }
+  .hero-img-text { position: relative; z-index: 2; padding: 2rem; color: rgba(255,255,255,0.9); }
+  .hero-img-text h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; font-style: italic; margin-bottom: 0.4rem; }
+  .hero-img-text p { font-size: 0.85rem; opacity: 0.75; }
+  .hero-badge { position: absolute; top: 2rem; right: -1rem; background: var(--yellow-pale); border: 1px solid rgba(233,196,106,0.4); border-radius: 16px; padding: 1rem 1.25rem; text-align: center; }
+  .hero-badge-num { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 600; color: var(--teal-dark); display: block; }
+  .hero-badge-text { font-size: 0.72rem; color: var(--text-muted); }
+
+  section { padding: 6rem 5%; }
+  .section-label { display: inline-block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 600; line-height: 1.2; margin-bottom: 1rem; }
+  .section-sub { font-size: 1rem; color: var(--text-mid); font-weight: 300; max-width: 500px; line-height: 1.8; }
+  .section-header { margin-bottom: 3rem; }
+
+  #packages { background: var(--cream); }
+  .tab-bar { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .tab-btn { background: transparent; border: 1px solid var(--border); color: var(--text-mid); padding: 0.5rem 1.2rem; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+  .tab-btn.active { background: var(--teal); color: white; border-color: var(--teal); }
+  .tab-btn:hover:not(.active) { border-color: var(--teal); color: var(--teal); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  .pkg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+  .pkg-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+  .pkg-card:hover { transform: translateY(-5px); box-shadow: 0 16px 40px rgba(42,157,143,0.12); }
+  .pkg-top { height: 8px; }
+  .pkg-top.pilgrimage { background: linear-gradient(90deg, var(--teal-dark), var(--teal)); }
+  .pkg-top.leisure { background: linear-gradient(90deg, var(--sage), #a8c5b5); }
+  .pkg-top.heli { background: linear-gradient(90deg, #6B9080, var(--yellow)); }
+  .pkg-body { padding: 1.5rem; }
+  .pkg-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.75rem; }
+  .pkg-tag { font-size: 0.68rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.2rem 0.65rem; border-radius: 50px; }
+  .t-green { background: var(--teal-light); color: var(--teal-dark); }
+  .t-yellow { background: #FEF3C7; color: #92400E; }
+  .t-sage { background: var(--sage-light); color: var(--sage); }
+  .pkg-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.3rem; }
+  .pkg-duration { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+  .pkg-desc { font-size: 0.875rem; color: var(--text-mid); font-weight: 300; line-height: 1.7; margin-bottom: 1rem; }
+  .pkg-route { font-size: 0.75rem; color: var(--text-muted); background: var(--cream); padding: 0.5rem 0.75rem; border-radius: 8px; margin-bottom: 1rem; line-height: 1.6; }
+  .pkg-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 1rem; border-top: 1px solid var(--border); }
+  .pkg-price { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 600; color: var(--teal-dark); }
+  .pkg-price span { font-size: 0.78rem; font-weight: 400; color: var(--text-muted); font-family: 'DM Sans', sans-serif; }
+  .pkg-btn { background: var(--teal-light); color: var(--teal-dark); border: none; padding: 0.5rem 1.2rem; border-radius: 50px; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .pkg-btn:hover { background: var(--teal); color: white; }
+
+  #cabs { background: var(--white); }
+  .taxi-h { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 600; color: var(--text-dark); margin: 2rem 0 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--border); }
+  .t-wrap { overflow-x: auto; margin-bottom: 0.4rem; }
+  table.t { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  table.t th { background: var(--teal-light); color: var(--teal-dark); font-weight: 500; padding: 0.65rem 1rem; text-align: left; font-size: 0.78rem; }
+  table.t td { padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); color: var(--text-mid); }
+  table.t tr:last-child td { border-bottom: none; }
+  table.t tr:hover td { background: var(--cream); }
+  .t-note { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2rem; font-style: italic; }
+
+  .dest-strip { background: var(--teal-dark); padding: 4rem 5%; text-align: center; }
+  .dest-strip h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-style: italic; font-weight: 400; margin-bottom: 2rem; color: rgba(255,255,255,0.9); }
+  .dest-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; justify-content: center; }
+  .dest-tag { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); color: rgba(255,255,255,0.85); padding: 0.5rem 1.25rem; border-radius: 50px; font-size: 0.875rem; transition: all 0.2s; }
+  .dest-tag:hover { background: rgba(255,255,255,0.22); color: white; }
+
+  #why { background: var(--sage-light); }
+  .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; }
+  .why-card { background: var(--white); border-radius: 16px; padding: 2rem 1.5rem; border: 1px solid var(--border); }
+  .why-icon { width: 48px; height: 48px; background: var(--teal-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.25rem; }
+  .why-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 0.5rem; }
+  .why-desc { font-size: 0.875rem; color: var(--text-mid); font-weight: 300; line-height: 1.7; }
+
+  #contact { background: var(--yellow-pale); }
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+  .contact-info h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--text-dark); margin-bottom: 1rem; }
+  .contact-info p { color: var(--text-mid); font-weight: 300; line-height: 1.8; margin-bottom: 2rem; }
+  .cd { display: flex; gap: 0.75rem; align-items: flex-start; margin-bottom: 1rem; }
+  .cd-icon { width: 36px; height: 36px; background: var(--teal-light); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .cd strong { display: block; font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 500; margin-bottom: 0.1rem; }
+  .cd span { font-size: 0.95rem; color: var(--text-dark); }
+  .contact-form { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 2.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .fg { margin-bottom: 1.25rem; }
+  .fg label { display: block; font-size: 0.78rem; font-weight: 500; color: var(--text-mid); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .fg input, .fg select, .fg textarea { width: 100%; border: 1px solid rgba(42,157,143,0.2); border-radius: 10px; padding: 0.7rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; color: var(--text-dark); background: var(--cream); outline: none; transition: border-color 0.2s; }
+  .fg input:focus, .fg select:focus, .fg textarea:focus { border-color: var(--teal); background: white; }
+  .fg textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; background: var(--teal); color: white; border: none; padding: 0.9rem; border-radius: 50px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: background 0.2s; }
+  .form-submit:hover { background: var(--teal-dark); }
+
+  footer { background: var(--text-dark); color: rgba(255,255,255,0.6); padding: 3rem 5%; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .fl { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: white; }
+  .fl span { color: var(--yellow); }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: white; }
+
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; padding-top: calc(68px + 2rem); }
+    .hero-image-wrap { display: none; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Dev<span>Bhoomi</span> Travels</div>
+  <ul class="nav-links">
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#cabs">Cabs & Taxi</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Now</button>
+</nav>
+
+<section class="hero">
+  <div>
+    <div class="hero-eyebrow">Based in Haridwar &nbsp;·&nbsp; Trusted Local Experts</div>
+    <h1>Journey into the<br /><em>Sacred Himalayas</em></h1>
+    <p>Plan your Char Dham, Kedarnath, or Rishikesh trip with real local knowledge — starting from Haridwar. No hidden charges, no confusion.</p>
+    <div class="hero-actions">
+      <a href="#packages" class="btn-primary">Explore Packages</a>
+      <a href="https://wa.me/91XXXXXXXXXX" class="btn-outline">💬 WhatsApp Us</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num">500+</div><div class="stat-label">Happy Pilgrims</div></div>
+      <div><div class="stat-num">20+</div><div class="stat-label">Packages</div></div>
+      <div><div class="stat-num">24/7</div><div class="stat-label">Support</div></div>
+    </div>
+  </div>
+  <div class="hero-image-wrap">
+    <div class="hero-img-main">
+      <div class="hero-img-overlay"></div>
+      <div class="hero-img-text">
+        <h3>Ganga Aarti, Haridwar</h3>
+        <p>Every evening, a thousand lamps light the holy river</p>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <span class="hero-badge-num">4.9★</span>
+      <div class="hero-badge-text">Verified Reviews</div>
+    </div>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="section-header fade-in">
+    <div class="section-label">Tour Packages</div>
+    <h2 class="section-title">Sacred Journeys for Every Pilgrim</h2>
+    <p class="section-sub">Packages starting from Haridwar or Delhi. Standard category prices shown. Premium and deluxe options available on request.</p>
+  </div>
+
+  <div class="tab-bar fade-in">
+    <button class="tab-btn active" onclick="showTab('chardham',this)">Char Dham Yatra</button>
+    <button class="tab-btn" onclick="showTab('dodham',this)">Do Dham Yatra</button>
+    <button class="tab-btn" onclick="showTab('ekdham',this)">Ek Dham & Others</button>
+    <button class="tab-btn" onclick="showTab('leisure',this)">Leisure Tours</button>
+  </div>
+
+  <div class="tab-panel active" id="tab-chardham">
+    <div class="pkg-grid">
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-green">From Haridwar</span><span class="pkg-tag t-yellow">Most Popular</span></div>
+          <div class="pkg-name">Char Dham Yatra</div>
+          <div class="pkg-duration">8 Nights / 9 Days · Without stay at Kedarnath</div>
+          <p class="pkg-desc">All four Dhams — Yamunotri, Gangotri, Kedarnath (same-day return), and Badrinath. Private vehicle, hotels included throughout.</p>
+          <div class="pkg-route">📍 Haridwar → Barkot → Yamunotri → Uttarkashi → Gangotri → Guptkashi → Kedarnath → Badrinath → Haridwar</div>
+          <div class="pkg-footer"><div class="pkg-price">₹37,900 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Char Dham from Haridwar 8N9D')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-green">From Haridwar</span><span class="pkg-tag t-sage">With Kedarnath Stay</span></div>
+          <div class="pkg-name">Char Dham Yatra</div>
+          <div class="pkg-duration">9 Nights / 10 Days · With overnight at Kedarnath</div>
+          <p class="pkg-desc">Same complete Char Dham route with one night at Kedarnath — a more spiritual, unhurried experience. Best hotel near the temple arranged.</p>
+          <div class="pkg-route">📍 Haridwar → Mussoorie → Barkot → Yamunotri → Uttarkashi → Gangotri → Guptkashi → Kedarnath (stay) → Joshimath → Badrinath → Haridwar</div>
+          <div class="pkg-footer"><div class="pkg-price">₹43,900 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Char Dham Haridwar stay 9N10D')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-green">From Delhi</span></div>
+          <div class="pkg-name">Char Dham Yatra</div>
+          <div class="pkg-duration">11 Nights / 12 Days · Delhi pickup included</div>
+          <p class="pkg-desc">Vehicle pickup from Delhi airport or railway station. Standard, Deluxe, and Premium hotel options available. Full itinerary of all 4 Dhams.</p>
+          <div class="pkg-route">📍 Delhi → Haridwar → Barkot → Yamunotri → Uttarkashi → Gangotri → Guptkashi → Kedarnath → Badrinath → Rishikesh → Delhi</div>
+          <div class="pkg-footer"><div class="pkg-price">₹52,900 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Char Dham Delhi 11N12D')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top heli"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-yellow">By Helicopter</span><span class="pkg-tag t-sage">Luxury</span></div>
+          <div class="pkg-name">Char Dham by Helicopter</div>
+          <div class="pkg-duration">4 Nights / 5 Days · From Dehradun</div>
+          <p class="pkg-desc">Ideal for senior citizens or limited time. Bell 407 helicopters, DGCA approved. Best resort stay with all meals. Special darshan at all 4 Dhams.</p>
+          <div class="pkg-route">📍 Dehradun → Yamunotri → Gangotri → Kedarnath → Badrinath → Dehradun</div>
+          <div class="pkg-footer"><div class="pkg-price">₹2,25,000 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Char Dham Helicopter 4N5D')">Enquire</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-dodham">
+    <div class="pkg-grid">
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-green">From Haridwar</span></div>
+          <div class="pkg-name">Do Dham Yatra</div>
+          <div class="pkg-duration">4 Nights / 5 Days · Kedarnath + Badrinath</div>
+          <p class="pkg-desc">Kedarnath and Badrinath in one trip without overnight at Kedarnath. Private vehicle and experienced hill driver. Helicopter from Phata available.</p>
+          <div class="pkg-route">📍 Haridwar → Rudraprayag → Guptkashi → Kedarnath → Joshimath → Badrinath → Haridwar</div>
+          <div class="pkg-footer"><div class="pkg-price">₹20,500 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Do Dham Haridwar 4N5D')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-green">From Haridwar</span><span class="pkg-tag t-sage">With Kedarnath Stay</span></div>
+          <div class="pkg-name">Do Dham Yatra</div>
+          <div class="pkg-duration">5 Nights / 6 Days · With Kedarnath overnight</div>
+          <p class="pkg-desc">Haridwar / Rishikesh / Dehradun Airport departure. Overnight stay at Kedarnath arranged at best available hotels. Exclusive private vehicle.</p>
+          <div class="pkg-route">📍 Haridwar → Devprayag → Rudraprayag → Guptkashi → Kedarnath (stay) → Badrinath → Haridwar</div>
+          <div class="pkg-footer"><div class="pkg-price">₹26,900 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Do Dham Haridwar stay 5N6D')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-green">From Delhi</span></div>
+          <div class="pkg-name">Do Dham Yatra</div>
+          <div class="pkg-duration">7 Nights / 8 Days · With Kedarnath stay</div>
+          <p class="pkg-desc">Delhi to Kedarnath–Badrinath, comprehensive private tour. Meals, hotels, and an experienced driver all included. Helicopter option available.</p>
+          <div class="pkg-route">📍 Delhi → Haridwar → Devprayag → Kedarnath (stay) → Chopta → Joshimath → Badrinath → Delhi</div>
+          <div class="pkg-footer"><div class="pkg-price">₹35,500 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Do Dham Delhi 7N8D')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-sage">No Trekking</span></div>
+          <div class="pkg-name">Gangotri – Badrinath Tour</div>
+          <div class="pkg-duration">5 Nights / 6 Days</div>
+          <p class="pkg-desc">For those who want to avoid the Kedarnath trek. Gangotri — origin of Ganga — and Badrinath on the Alaknanda. Spiritually full, physically comfortable.</p>
+          <div class="pkg-route">📍 Haridwar → Uttarkashi → Gangotri → Joshimath → Badrinath → Haridwar</div>
+          <div class="pkg-footer"><div class="pkg-price">₹20,500 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Gangotri Badrinath 5N6D')">Enquire</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-ekdham">
+    <div class="pkg-grid">
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-green">Ek Dham</span></div>
+          <div class="pkg-name">Ek Dham Yatra</div>
+          <div class="pkg-duration">2–3 Days · Choose one shrine</div>
+          <p class="pkg-desc">Visit one of the four Dhams — Kedarnath, Badrinath, Gangotri, or Yamunotri. Perfect for first-timers, elderly pilgrims, or those with limited time.</p>
+          <div class="pkg-footer"><div class="pkg-price">from ₹11,500 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Ek Dham Yatra')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-sage">Vishnu Circuit</span></div>
+          <div class="pkg-name">Divya Desam Yatra</div>
+          <div class="pkg-duration">Multi-day · Uttarakhand Vishnu temples</div>
+          <p class="pkg-desc">A lesser-known but deeply sacred tour of Uttarakhand's Divya Desam temples — significant for Vaishnav devotees. Peaceful and uncrowded.</p>
+          <div class="pkg-footer"><div class="pkg-price">from ₹14,500 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Divya Desam Yatra')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-green">Panch Badri</span></div>
+          <div class="pkg-name">Panch Badri with Panch Prayag</div>
+          <div class="pkg-duration">Multi-day · Five sacred confluences</div>
+          <p class="pkg-desc">All five Badri temples plus the five sacred river confluences of Uttarakhand. A rare off-beaten pilgrimage most tourists never take.</p>
+          <div class="pkg-footer"><div class="pkg-price">from ₹18,000 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Panch Badri Panch Prayag')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top pilgrimage"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-yellow">Sikh Pilgrimage</span></div>
+          <div class="pkg-name">Sri Hemkund Sahib Yatra</div>
+          <div class="pkg-duration">Multi-day · Valley of Flowers nearby</div>
+          <p class="pkg-desc">Sacred Sikh pilgrimage at 4,329m altitude. Can be combined with Valley of Flowers for a breathtaking natural and spiritual experience.</p>
+          <div class="pkg-footer"><div class="pkg-price">from ₹21,700 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Hemkund Sahib Yatra')">Enquire</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tab-panel" id="tab-leisure">
+    <div class="pkg-grid">
+      <div class="pkg-card fade-in">
+        <div class="pkg-top leisure"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-sage">Adventure</span><span class="pkg-tag t-green">Spiritual</span></div>
+          <div class="pkg-name">Rishikesh Tour</div>
+          <div class="pkg-duration">1–3 Days · 6 packages available</div>
+          <p class="pkg-desc">River rafting, bungee, cliff jumping, Ganga Aarti, ashrams, yoga centres. Six customised packages for different budgets and group types.</p>
+          <div class="pkg-footer"><div class="pkg-price">from ₹1,000 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Rishikesh Tour')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top leisure"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-green">Spiritual</span></div>
+          <div class="pkg-name">Haridwar Darshan Tour</div>
+          <div class="pkg-duration">1–2 Days · 3 packages</div>
+          <p class="pkg-desc">Har Ki Pauri, Mansa Devi, Chandi Devi, local temples, Patanjali campus, evening Ganga Aarti. Best for day trippers and family groups.</p>
+          <div class="pkg-footer"><div class="pkg-price">from ₹1,000 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Haridwar Darshan Tour')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top leisure"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-sage">Hill Station</span></div>
+          <div class="pkg-name">Mussoorie Tour</div>
+          <div class="pkg-duration">2 Days · Queen of Hills</div>
+          <p class="pkg-desc">Company Bagh, Kempty Falls, Mall Road shopping. 100 km from Haridwar, 2.5 hr drive. Ideal 2-day escape for plains families.</p>
+          <div class="pkg-footer"><div class="pkg-price">from ₹1,000 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Mussoorie Tour')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top leisure"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-green">Snow · Winter</span></div>
+          <div class="pkg-name">Auli Ski Tour</div>
+          <div class="pkg-duration">2–3 Days · Best Oct–March</div>
+          <p class="pkg-desc">Uttarakhand's best skiing destination. Asia's longest cable car, snow-covered slopes, stunning views of Nanda Devi. Beginner-friendly too.</p>
+          <div class="pkg-footer"><div class="pkg-price">from ₹10,800 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Auli Tour')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top leisure"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-sage">Trek</span></div>
+          <div class="pkg-name">Chopta & Tungnath Trek</div>
+          <div class="pkg-duration">2–3 Days · 2 packages</div>
+          <p class="pkg-desc">Highest Shiva temple in the world at 3,680m. Rhododendron forests and panoramic Himalayan views. Called the "Mini Switzerland of India."</p>
+          <div class="pkg-footer"><div class="pkg-price">from ₹7,500 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Chopta Tungnath Trek')">Enquire</button></div>
+        </div>
+      </div>
+      <div class="pkg-card fade-in">
+        <div class="pkg-top leisure"></div>
+        <div class="pkg-body">
+          <div class="pkg-tags"><span class="pkg-tag t-yellow">Wildlife</span></div>
+          <div class="pkg-name">Jim Corbett + Nainital Tour</div>
+          <div class="pkg-duration">3–5 Days · Kumaon region</div>
+          <p class="pkg-desc">India's oldest national park for tiger safaris, then Nainital's famous lake and hilltop views. Can be extended to Kausani for a full Kumaon experience.</p>
+          <div class="pkg-footer"><div class="pkg-price">from ₹1,000 <span>/ person</span></div><button class="pkg-btn" onclick="enquire('Corbett Nainital Tour')">Enquire</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="dest-strip">
+  <h2>We cover every corner of Uttarakhand</h2>
+  <div class="dest-tags">
+    <span class="dest-tag">Haridwar</span><span class="dest-tag">Rishikesh</span>
+    <span class="dest-tag">Kedarnath</span><span class="dest-tag">Badrinath</span>
+    <span class="dest-tag">Yamunotri</span><span class="dest-tag">Gangotri</span>
+    <span class="dest-tag">Mussoorie</span><span class="dest-tag">Dehradun</span>
+    <span class="dest-tag">Jim Corbett</span><span class="dest-tag">Auli</span>
+    <span class="dest-tag">Chopta</span><span class="dest-tag">Nainital</span>
+    <span class="dest-tag">Valley of Flowers</span><span class="dest-tag">Hemkund Sahib</span>
+  </div>
+</div>
+
+<section id="cabs">
+  <div class="section-header fade-in">
+    <div class="section-label">Cab & Car Rental</div>
+    <h2 class="section-title">Fixed Rates. Expert Drivers.<br />No Last-Minute Surprises.</h2>
+    <p class="section-sub">All vehicles well maintained. Drivers experienced on Uttarakhand hill roads. Rates include driver, fuel, and night halting charges.</p>
+  </div>
+  <div class="fade-in">
+    <div class="taxi-h">🚗 Haridwar Day Trips (Return)</div>
+    <div class="t-wrap"><table class="t"><thead><tr><th>Route</th><th>Dzire</th><th>Innova Crysta</th><th>Tempo Traveller</th></tr></thead><tbody>
+      <tr><td>Haridwar ↔ Rishikesh</td><td>₹3,000</td><td>₹4,500</td><td>₹6,500</td></tr>
+      <tr><td>Haridwar ↔ Mussoorie</td><td>₹4,000</td><td>₹5,500</td><td>₹8,500</td></tr>
+      <tr><td>Haridwar ↔ Patanjali</td><td>₹2,500</td><td>₹3,500</td><td>₹4,500</td></tr>
+      <tr><td>Haridwar ↔ Dehradun</td><td>₹3,500</td><td>₹4,500</td><td>₹7,500</td></tr>
+    </tbody></table></div>
+    <p class="t-note">+ Toll, Parking & GST 5% extra</p>
+
+    <div class="taxi-h">📍 Haridwar One-Way Transfers</div>
+    <div class="t-wrap"><table class="t"><thead><tr><th>Route</th><th>Indigo</th><th>Innova</th><th>Tempo Traveller</th></tr></thead><tbody>
+      <tr><td>Haridwar → Delhi</td><td>₹4,000</td><td>₹6,500</td><td>₹14,500</td></tr>
+      <tr><td>Haridwar → Rishikesh</td><td>₹1,200</td><td>₹2,000</td><td>₹4,000</td></tr>
+      <tr><td>Haridwar → Mussoorie</td><td>₹4,000</td><td>₹5,000</td><td>₹7,500</td></tr>
+      <tr><td>Haridwar → Jolly Grant Airport</td><td>₹1,800</td><td>₹2,500</td><td>₹4,500</td></tr>
+    </tbody></table></div>
+    <p class="t-note">+ Toll, Parking & GST extra</p>
+
+    <div class="taxi-h">⛰️ Char Dham Car Rental (Multi-day)</div>
+    <div class="t-wrap"><table class="t"><thead><tr><th>Vehicle</th><th>Seats</th><th>Char Dham (9 Days)</th><th>Do Dham (5 Days)</th><th>Ek Dham (3 Days)</th></tr></thead><tbody>
+      <tr><td>Dzire</td><td>4</td><td>₹36,000</td><td>₹20,000</td><td>₹14,000</td></tr>
+      <tr><td>Ertiga</td><td>6–7</td><td>₹50,000</td><td>₹28,000</td><td>₹18,000</td></tr>
+      <tr><td>Innova Crysta</td><td>6–7</td><td>₹63,000</td><td>₹35,000</td><td>₹24,000</td></tr>
+      <tr><td>Tempo Traveller (12 seats)</td><td>12</td><td>₹90,000</td><td>₹50,000</td><td>₹30,000</td></tr>
+    </tbody></table></div>
+    <p class="t-note">+ GST 5% extra · Valid till Nov 2026</p>
+
+    <div class="taxi-h">🗺️ Uttarakhand Multi-Day Tours (Car Only)</div>
+    <div class="t-wrap"><table class="t"><thead><tr><th>Tour</th><th>Dzire</th><th>Innova</th><th>Tempo Traveller</th></tr></thead><tbody>
+      <tr><td>Mussoorie + Dhanaulti (2 days)</td><td>₹7,000</td><td>₹10,000</td><td>₹14,000</td></tr>
+      <tr><td>Auli (3 days)</td><td>₹11,000</td><td>₹16,000</td><td>₹22,500</td></tr>
+      <tr><td>Chopta Sector (3 days)</td><td>₹11,000</td><td>₹15,000</td><td>₹22,500</td></tr>
+      <tr><td>Corbett + Nainital (4 days)</td><td>₹15,000</td><td>₹22,000</td><td>₹30,000</td></tr>
+      <tr><td>Corbett + Nainital + Kausani (5 days)</td><td>₹18,000</td><td>₹25,000</td><td>₹38,000</td></tr>
+    </tbody></table></div>
+    <p class="t-note">+ Toll, Parking & GST 5% extra</p>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-header fade-in">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">Local Knowledge,<br />Online Convenience</h2>
+  </div>
+  <div class="why-grid">
+    <div class="why-card fade-in"><div class="why-icon">🏡</div><div class="why-title">Actually Local</div><p class="why-desc">We live in Haridwar. We know which roads close in monsoon, which guides are genuine, and which ghats to visit at dawn — not a Delhi office guessing.</p></div>
+    <div class="why-card fade-in"><div class="why-icon">📋</div><div class="why-title">Transparent Pricing</div><p class="why-desc">Every package shows what is included and what is not. Fixed taxi rates. No price hike at last minute. What you see is what you pay.</p></div>
+    <div class="why-card fade-in"><div class="why-icon">📞</div><div class="why-title">Book Online or Just Call</div><p class="why-desc">Start your enquiry online. Call or WhatsApp to confirm any detail you want. No pressure to pay digitally if you prefer cash on arrival.</p></div>
+    <div class="why-card fade-in"><div class="why-icon">🙏</div><div class="why-title">Spiritual Sensitivity</div><p class="why-desc">We treat it as a yatra, not just a trip. Schedules respect temple timings. Drivers understand the sacred nature of your journey.</p></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-info fade-in">
+      <div class="section-label">Get in Touch</div>
+      <h2>Plan Your Journey With Us</h2>
+      <p>Tell us your destination, group size, and travel dates. We will send you the best-matched options within a few hours — no spam, no pressure to pay.</p>
+      <div class="cd"><div class="cd-icon">📍</div><div><strong>Location</strong><span>Haridwar, Uttarakhand — 249401</span></div></div>
+      <div class="cd"><div class="cd-icon">📱</div><div><strong>WhatsApp / Call</strong><span>+91 XXXXX XXXXX</span></div></div>
+      <div class="cd"><div class="cd-icon">✉️</div><div><strong>Email</strong><span>hello@devbhoomitravels.in</span></div></div>
+      <div class="cd"><div class="cd-icon">🕐</div><div><strong>Response Time</strong><span>Usually within 2–4 hours, Mon–Sun</span></div></div>
+    </div>
+    <div class="contact-form fade-in">
+      <div class="form-row">
+        <div class="fg"><label>Your Name</label><input type="text" id="f-name" placeholder="Ramesh Kumar" /></div>
+        <div class="fg"><label>WhatsApp / Phone</label><input type="tel" placeholder="+91 98765 43210" /></div>
+      </div>
+      <div class="form-row">
+        <div class="fg"><label>Travel Date</label><input type="date" /></div>
+        <div class="fg"><label>No. of Travellers</label><input type="number" min="1" placeholder="4" /></div>
+      </div>
+      <div class="fg">
+        <label>Package / Destination</label>
+        <select id="f-pkg">
+          <option value="">Select a package</option>
+          <optgroup label="Char Dham Yatra">
+            <option>Char Dham from Haridwar (8N/9D) — ₹37,900/person</option>
+            <option>Char Dham from Haridwar with Kedarnath stay (9N/10D) — ₹43,900/person</option>
+            <option>Char Dham from Delhi (11N/12D) — ₹52,900/person</option>
+            <option>Char Dham by Helicopter (4N/5D) — ₹2,25,000/person</option>
+          </optgroup>
+          <optgroup label="Do Dham Yatra">
+            <option>Do Dham from Haridwar (4N/5D) — ₹20,500/person</option>
+            <option>Do Dham from Haridwar with stay (5N/6D) — ₹26,900/person</option>
+            <option>Do Dham from Delhi (7N/8D) — ₹35,500/person</option>
+            <option>Gangotri–Badrinath (5N/6D) — ₹20,500/person</option>
+          </optgroup>
+          <optgroup label="Other Pilgrimages">
+            <option>Ek Dham Yatra — from ₹11,500</option>
+            <option>Panch Badri + Panch Prayag — from ₹18,000</option>
+            <option>Hemkund Sahib Yatra — from ₹21,700</option>
+          </optgroup>
+          <optgroup label="Leisure Tours">
+            <option>Rishikesh Tour</option>
+            <option>Haridwar Darshan Tour</option>
+            <option>Mussoorie Tour</option>
+            <option>Auli Ski Tour — from ₹10,800</option>
+            <option>Chopta & Tungnath Trek — from ₹7,500</option>
+            <option>Jim Corbett + Nainital Tour</option>
+          </optgroup>
+          <option>Taxi / Car Rental Only</option>
+          <option>Custom Trip</option>
+        </select>
+      </div>
+      <div class="fg"><label>Message (optional)</label><textarea placeholder="Budget range, hotel preference, any special requirements..."></textarea></div>
+      <button class="form-submit" id="sbtn" onclick="submitForm()">Send Enquiry →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">Dev<span>Bhoomi</span> Travels</div>
+  <ul class="footer-links">
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#cabs">Cabs</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div style="font-size:0.8rem;">© 2026 DevBhoomi Travels · Haridwar</div>
+</footer>
+
+<script>
+  function showTab(name, btn) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('tab-' + name).classList.add('active');
+    btn.classList.add('active');
+  }
+  function enquire(pkg) {
+    const sel = document.getElementById('f-pkg');
+    for (let i = 0; i < sel.options.length; i++) {
+      const words = pkg.split(' ');
+      if (sel.options[i].text.toLowerCase().includes(words[0].toLowerCase())) { sel.selectedIndex = i; break; }
+    }
+    document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+  }
+  function submitForm() {
+    const name = document.getElementById('f-name').value.trim();
+    if (!name) { alert('Please enter your name.'); return; }
+    const btn = document.getElementById('sbtn');
+    btn.textContent = '✓ Enquiry Sent! We\'ll WhatsApp you shortly.';
+    btn.style.background = '#1B6E65';
+    btn.disabled = true;
+  }
+  const obs = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) { x.target.classList.add('visible'); obs.unobserve(x.target); } }), { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
